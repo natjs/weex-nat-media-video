@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>headers
+<?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://www.w3.org/ns/widgets"
     id="nat-media-video"
@@ -26,6 +26,23 @@
 
      <!-- android -->
      <platform name="android">
+        <config-file target="config.xml" parent="/*">
+             <feature name="MediaVideoModule">
+                 <param name="category" value="module" />
+                 <param name="android-package" value="com.nat.weex.MediaVideoModule" />
+                 <param name="api" value="nat/camera" />
+             </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+             <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <source-file
+             src="android/MediaVideoModule.java"
+            target-dir="src/com/alibaba/weex/nat/MediaVideoModule.java" />
+
+        <framework src="com.nat:media-video:1.0.6" />
      </platform>
 
 </plugin>
