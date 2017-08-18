@@ -2,13 +2,14 @@
 //  WeexNatVideo.m
 //
 //  Created by huangyake on 17/1/7.
-//  Copyright © 2017 Nat. All rights reserved.
+//  Copyright © 2017 Instapp. All rights reserved.
 //
 
 #import "WeexNatVideo.h"
 #import "NatVideo.h"
 
 @implementation WeexNatVideo
+@synthesize weexInstance;
 WX_EXPORT_METHOD(@selector(play::))
 WX_EXPORT_METHOD(@selector(pause:))
 WX_EXPORT_METHOD(@selector(stop:))

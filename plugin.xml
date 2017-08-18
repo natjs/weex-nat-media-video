@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://www.w3.org/ns/widgets"
     id="nat-media-video"
-    version="0.1.2">
+    version="0.2.3">
     <name>nat-media-video</name>
     <description>Nat.js module: Video (play video remote or local)</description>
     <license>MIT</license>
@@ -12,37 +12,38 @@
     
      <!-- ios -->
      <platform name="ios">
-         <framework src="NatVideo" type="podspec" spec="" />
          <config-file target="WeexpluginConfig.xml" parent="/*">
-             <feature name="WXTestModule">
+             <feature name="WeexNatVideo">
                  <param name="category" value="module" />
                  <param name="ios-package" value="WeexNatVideo" />
                  <param name="api" value="nat/media/video" />
              </feature>
          </config-file>
+
          <header-file src="ios/WeexNatVideo.h"/>
          <source-file src="ios/WeexNatVideo.m"/>
+         
+         <framework src="NatVideo" type="podspec" spec="0.0.3" />
      </platform>
 
      <!-- android -->
      <platform name="android">
         <config-file target="config.xml" parent="/*">
-             <feature name="MediaVideoModule">
+             <feature name="Video">
                  <param name="category" value="module" />
-                 <param name="android-package" value="com.nat.weex.MediaVideoModule" />
-                 <param name="api" value="nat/camera" />
+                 <param name="android-package" value="com.nat.weex.Video" />
+                 <param name="api" value="nat/media/video" />
              </feature>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/*">
-             <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.INTERNET" />
+             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
         </config-file>
 
-        <source-file
-             src="android/MediaVideoModule.java"
-            target-dir="src/com/alibaba/weex/nat/MediaVideoModule.java" />
+        <source-file src="android/Video.java" target-dir="src/com/instapp/nat/media/video" />
 
-        <framework src="com.nat:media-video:1.0.6" />
+        <framework src="com.nat:media-video:1.1.3" />
      </platform>
 
 </plugin>
