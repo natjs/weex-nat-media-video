@@ -5,25 +5,24 @@
 //  Copyright © 2017 Instapp. All rights reserved.
 //
 
-#import "WeexNatVideo.h"
-#import "NatVideo.h"
+#import "WeexNatMediaVideo.h"
+#import <WeexPluginLoader/WeexPluginLoader.h>
+#import <NatVideo/NatVideo.h>
 
-@implementation WeexNatVideo
+@implementation WeexNatMediaVideo
 @synthesize weexInstance;
+
+WX_PlUGIN_EXPORT_MODULE(nat/media/video, WeexNatMediaVideo)
 WX_EXPORT_METHOD(@selector(play::))
 WX_EXPORT_METHOD(@selector(pause:))
 WX_EXPORT_METHOD(@selector(stop:))
 
-
 - (void)play:(NSString *)path :(WXModuleCallback)callback{
-    
     [[NatVideo singletonManger] play:path :^(id error,id result) {
-        if (error) {
-            if (callback) {
+        if (callback) {
+            if (error) {
                 callback(error);
-            }
-        }else{
-            if (callback) {
+            } else {
                 callback(result);
             }
         }
@@ -32,32 +31,29 @@ WX_EXPORT_METHOD(@selector(stop:))
 
 - (void)pause:(WXModuleCallback)callback{
     [[NatVideo singletonManger] pause:^(id error,id result) {
-        if (error) {
-            if (callback) {
+        if (callback) {
+            if (error) {
                 callback(error);
-            }
-        }else{
-            if (callback) {
+            } else {
                 callback(result);
             }
         }
     }];
 }
+
 - (void)stop:(WXModuleCallback)callback{
     [[NatVideo singletonManger] stop:^(id error,id result) {
-        if (error) {
-            if (callback) {
+        if (callback) {
+            if (error) {
                 callback(error);
-            }
-        }else{
-            if (callback) {
+            } else {
                 callback(result);
             }
         }
     }];
 }
+
 -(void)dealloc{
-    //移除所有通知监控
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
