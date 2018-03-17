@@ -1,6 +1,6 @@
 # nat-media-video
 
-- [Documentation](http://natjs.com/#/#video)
+- [Documentation](http://natjs.com/#/reference/video)
 - [Github](https://github.com/natjs/weex-nat-media-video)
 
 ## Installation
